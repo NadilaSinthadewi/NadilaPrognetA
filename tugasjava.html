@@ -114,7 +114,6 @@
               <label"><strong>Jenis Kelamin :</strong></label>
               <p><input class="me-1" type='radio' name='jeniskelamin' value='Laki - Laki'>Laki-laki</p>
               <p><input class="me-1" type='radio' name='jeniskelamin' value='Perempuan'>Perempuan</p>
-              <p><input class="me-1" type='radio' name='jeniskelamin' value='Tidak ingin Memberi Tahu'>Lainnya</p>
             </div>
             <div class="mb-3">
               <label><strong>Hobi Anda :</strong></label>
@@ -147,7 +146,7 @@
           }
           // Validasi Nama Lengkap
           if (document.forms["formBiodata"]["nickname"].value == "") {
-              alert("Masukkan Nama Panggilam Anda");
+              alert("Masukkan Nama Panggilan Anda");
               document.forms["formBiodata"]["nickname"].focus();
               return false;
           }
