@@ -65,114 +65,152 @@
 
   </header><!-- End Header -->
 
-<section id="form" class="form-mf sect-pt4 route">
-    <div class="container mt-4">
-        <div class="section-title">
-            <h2>Form Biodata</h2>
-        </div>
-        <form id="formbio" action="hasil.html" method="GET">
-          <div class="form-group mb-4">
-            <label for="fullname">Full Name :</label>
-            <input type="text" class="form-control" id="fullname" name="fullname" required>
-          </div>
-          <div class="form-group mb-4">
-            <label for="nickname">Nick Name :</label>
-            <input type="text" class="form-control" id="nickname" name="nickname" required>
-          </div>
-          <div>
-            <label for="password" class="form-label">Password</label>
-            <input type="password" id="password" class="form-control" aria-describedby="passwordHelpBlock" required>
-            <div id="passwordHelpBlock" class="form-text mb-4">
-              Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+  <main id="main"><!-- Start main -->
+
+    <!-- ======= Start Form ======= -->
+    <section id="form" class="form-mf sect-pt4 route">
+      <div class="container mt-4">
+        <h1 class="text-center">Form Biodata</h1>
+          <form name="formBiodata" action="hasil.php" method="post" onsubmit="return validateForm()">
+            <div class="form-group mb-3">
+              <label><strong>Nama lengkap :</strong></label>
+              <input type="text" name="fullname" placeholder="Nama Lengkap" class="form-control">
             </div>
-          </div>
-          <div class="form-group mb-4">
-              <label for="nim">NIM :</label>
-              <input type="text" class="form-control" id="nim" name="nim" required>
-          </div>
-          <div class="form-group mb-4">
-            <label for="email">Email :</label>
-            <input type="text" class="form-control" id="email" name="email" required>
+            <div class="form-group mb-3">
+              <label><strong>Nama panggilan :</strong></label>
+              <input type="text" name="nickname" placeholder="Nama Panggilan" class="form-control">
+            </div>
+            <div class="form-group mb-3">
+              <label><strong>NIM :</strong></label>
+              <input type="text" name="nim" placeholder="NIM" class="form-control">
+            </div>
+            <div class="form-group mb-3">
+              <label><strong>Email :</strong></label>
+              <input type="email" name="email" placeholder="name@example.com" class="form-control">
+            </div>
+            <div class="form-group">
+              <label><strong>Username Instagram :</strong></label>
+            </div>
+            <div class="input-group flex-nowrap mb-3">
+              <span class="input-group-text" id="addon-wrapping">@</span>
+              <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+            </div>
+            <div class="form-group mb-3">
+              <label><strong>Password :</strong></label>
+              <input type="password" name="password" class="form-control" placeholder="Password" aria-describedby="passwordHelpBlock">
+            </div>
+            <div class="form-group mb-3">
+              <label><strong>Angkatan :</strong></label>
+              <select name="angkatan" class="form-control">
+                <option selected>Pilih Angkatan</option>
+                <option value="Angkatan 19">Angkatan 19</option>
+                <option value="Angkatan 20">Angkatan 20</option>
+                <option value="Angkatan 21">Angkatan 21</option>
+                <option value="Angkatan 22">Angkatan 22</option>
+                <option value="Angkatan 23">Angkatan 23</option>
+              </select>
+            </div>
+            <div>
+              <label"><strong>Jenis Kelamin :</strong></label>
+              <p><input class="me-1" type='radio' name='jeniskelamin' value='Laki - Laki'>Laki-laki</p>
+              <p><input class="me-1" type='radio' name='jeniskelamin' value='Perempuan'>Perempuan</p>
+              <p><input class="me-1" type='radio' name='jeniskelamin' value='Tidak ingin Memberi Tahu'>Lainnya</p>
+            </div>
+            <div class="mb-3">
+              <label><strong>Hobi Anda :</strong></label>
+              <p>
+                <input class="me-1" type='checkbox' name='hobi[]' value='Menyanyi'>Menyanyi
+                <input class="ms-4 me-1" type='checkbox' name='hobi[]' value='Menari/Dance'>Menari/Dance
+                <input class="ms-4 me-1" type='checkbox' name='hobi[]' value='Menonton Drakor/Film'>Menonton Drakor/Film
+                <input class="ms-4 me-1" type='checkbox' name='hobi[]' value='Berenang'>Berenang
+                <input class="ms-4 me-1" type='checkbox' name='hobi[]' value='Memasak'>Memasak
+              <p></p>
+                <input class="me-1" type='checkbox' name='hobi[]' value='Menggambar'>Menggambar         
+                <input class="ms-4 me-1" type='checkbox' name='hobi[]' value='Traveling'>Traveling
+                <input class="ms-3 me-1" type='checkbox' name='hobi[]' value='Membaca'>Membaca
+                <input class="ms-4 me-1" type='checkbox' name='hobi[]' value='Mendengarkan Musik'>Mendengarkan Musik
+                <input class="ms-3 me-1" type='checkbox' name='hobi[]' value='Olahraga'>Olahraga
+              </p>
+            </div>
+            <div>
+              <button type="submit" name="submit" class="btn btn-primary mb-4">Submit</button>
+            </div>
+          </form>
         </div>
-          <div class="form-group mb-4">
-            <label for="agama" class="form-label">Agama :</label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Select this option</option>
-              <option value="Hindu">Hindu</option>
-              <option value="Islam">Islam</option>
-              <option value="Budha">Budha</option>
-              <option value="Kristen Protestan">Kristen Protestan</option>
-              <option value="Kristen Katolik">Kristen Katolik</option>
-              <option value="Kong Hu Chu">Kong Hu Chu</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-          <div>
-            <label for="jeniskelamin" class="form-label">Jenis Kelamin :</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="jeniskelamin" id="jeniskelamin" required>
-            <label class="form-check-label" for="jeniskelamin" value="Laki - Laki">
-              Laki - Laki
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="jeniskelamin" id="jeniskelamin" required>
-            <label class="form-check-label" for="jeniskelamin" value="Perempuan">
-              Perempuan
-            </label>
-          </div>
-          <div class="form-check mb-4">
-            <input class="form-check-input" type="radio" name="jeniskelamin" id="jeniskelamin" required>
-            <label class="form-check-label" for="jeniskelamin" value="Tidak ingin memberitahu">
-              Other
-            </label>
-          </div>
-        <div>
-            <label for="hobi" class="form-label">Hobi:</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="hobi" value="option1">
-            <label class="form-check-label" for="hobi">Dancer</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="hobi" value="option2">
-            <label class="form-check-label" for="hobi">Menggambar</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="hobi" value="option3">
-            <label class="form-check-label" for="hobi">Menulis</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="hobi" value="option4">
-            <label class="form-check-label" for="hobi">Menyanyi</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="hobi" value="option5">
-            <label class="form-check-label" for="hobi">Gamers</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="hobi" value="option6">
-            <label class="form-check-label" for="hobi">Traveling</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="hobi" value="option7">
-            <label class="form-check-label" for="hobi">Berenang</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="hobi" value="option8">
-            <label class="form-check-label" for="hobi">Mendengarkan Musik</label>
-          </div>
-          <div class="form-check form-check-inline mb-4">
-            <input class="form-check-input" type="checkbox" id="hobi" value="option9">
-            <label class="form-check-label" for="hobi">Membaca</label>
-          </div>
-          <div>
-            <button type="submit" class="btn btn-primary mb-4">Submit</button>
-          </div>
-      </form>
-  </div>
-</section>
+      <script>
+        function validateForm() {
+          // Validasi Nama Lengkap
+          if (document.forms["formBiodata"]["fullname"].value == "") {
+              alert("Masukkan Nama Lengkap Anda");
+              document.forms["formBiodata"]["fullname"].focus();
+              return false;
+          }
+          // Validasi Nama Lengkap
+          if (document.forms["formBiodata"]["nickname"].value == "") {
+              alert("Masukkan Nama Panggilam Anda");
+              document.forms["formBiodata"]["nickname"].focus();
+              return false;
+          }
+          // Validasi NIM
+          if (document.forms["formBiodata"]["nim"].value == "") {
+              alert("Masukkan NIM Anda");
+              document.forms["formBiodata"]["nim"].focus();
+              return false;
+          }
+          // Validasi E-mail
+          if (document.forms["formBiodata"]["email"].value == "") {
+              alert("Masukkan E-mail Aktif Anda");
+              document.forms["formBiodata"]["email"].focus();
+              return false;
+          }
+          // Validasi Username
+          if (document.forms["formBiodata"]["username"].value == "") {
+              alert("Masukkan Username Anda");
+              document.forms["formBiodata"]["username"].focus();
+              return false;
+          }
+          // Validasi Password
+          if (document.forms["formBiodata"]["password"].value == "") {
+              alert("Masukkan Password Anda");
+              document.forms["formBiodata"]["password"].focus();
+              return false;
+          }
+          // Validasi Program Studi
+          if (document.forms["formBiodata"]["angkatan"].selectedIndex < 1) {
+              alert("Pilih Angkatan Anda");
+              document.forms["formBiodata"]["angkatan"].focus();
+              return false;
+          }
+          // Validasi Jenis Kelamin
+          var jeniskelamin = document.getElementsByName('jeniskelamin');
+          var genValue = false;
+            for(var i=0; i<jeniskelamin.length;i++){
+              if(jeniskelamin[i].checked == true){
+                  genValue = true;    
+              }
+            }
+            if(!genValue){
+              alert("Pilih Jenis Kelamin Anda");
+              return false;
+            }
+          // Validasi Hobi
+          var hobi = document.getElementsByName('hobi[]');
+          var genValue = false;
+            for(var i=0; i<hobi.length;i++){
+              if(hobi[i].checked == true){
+                  genValue = true;    
+              }
+            }
+            if(!genValue){
+              alert("Anda Belum Memilih Hobi!");
+              return false;
+            }
+        }
+      </script>
+    </section>
+    <!-- ======= End Form ======= -->
+  
+  </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">

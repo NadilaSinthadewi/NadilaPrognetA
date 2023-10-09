@@ -66,44 +66,84 @@
   </header><!-- End Header -->
 
 
-<section id="form" class="form-mf sect-pt4 route">
-    <div class="container mt-4 mb-4">
-      <div class="section-title">
-        <h2>Data Hasil Form Biodata</h2>
-    </div>
-      <br>
-        <ul>
-          <li><strong>Nama Lengkap :</strong> <span id="outputFullName"></span></li>
-          <li><strong>Nama Panggilan :</strong> <span id="outputNickName"></span></li>
-          <li><strong>NIM :</strong> <span id="outputNIM"></span></li>
-          <li><strong>E-mail :</strong> <span id="outputEmail"></span></li>
-          <li><strong>Agama :</strong> <span id="outputAgama"></span></li>
-          <li><strong>Jenis Kelamin :</strong> <span id="outputJenisKelamin"></span></li>
-          <li><strong>Hobi :</strong> <span id="outputHobi"></span></li>
-        </ul>
-    </div>
-    
-    <script>
-      // Mendapatkan nilai-nilai dari parameter URL (GET)
-        const params = new URLSearchParams(window.location.search);
-        const fullname = params.get('fullname');
-        const nickname = params.get('nickname');
-        const nim = params.get('nim');
-        const email = params.get('email');
-        const agama = params.get('agama');
-        const jeniskelamin = params.get('jeniskelamin');
-        const hobi = params.get('hobi');
-    
-       // Menampilkan data ke dalam dokumen HTML
-        document.getElementById('outputFullName').textContent = fullname;
-        document.getElementById('outputNickName').textContent = nickname;
-        document.getElementById('outputNIM').textContent = nim;
-        document.getElementById('outputEmail').textContent = email;
-        document.getElementById('outputAgama').textContent = agama;
-        document.getElementById('outputJenisKelamin').ariaChecked = jeniskelamin;
-        document.getElementById('outputHobi').ariaChecked = hobi;
-    </script>
-  </section>
+  <main id="main"><!-- Start main -->
+
+    <!-- ======= Start Hasil Form ======= -->
+    <section id="form" class="form-mf sect-pt4 route">
+      <div class="container mt-5">
+        <h1 class="text-center">Hasil Form Biodata</h1>
+          <table class="table" border="2">
+            <thead>
+              <?php
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                  // kolom nama lengkap
+                  echo "<tr>";
+                  echo "<td>"."Nama Lengkap"."</td>";
+                  echo "<td>".":"."</td>";
+                  echo "<td>".$fullname = $_POST['fullname']."</td>";
+                  echo "</tr>";
+                    // kolom nama panggilan
+                  echo "<tr>";
+                  echo "<td>"."Nama Panggilan"."</td>";
+                  echo "<td>".":"."</td>";
+                  echo "<td>".$nickname = $_POST['nickname']."</td>";
+                  echo "</tr>";
+                  // kolom nim
+                  echo "<tr>";
+                  echo "<td>"."NIM"."</td>";
+                  echo "<td>".":"."</td>";
+                  echo "<td>".$nim = $_POST['nim']."</td>";
+                  echo "</tr>";
+                  // kolom e-mail
+                  echo "<tr>";
+                  echo "<td>"."E-mail"."</td>";
+                  echo "<td>".":"."</td>";
+                  echo "<td>".$email = $_POST['email']."</td>";
+                  echo "</tr>";
+                  // kolom username
+                  echo "<tr>";
+                  echo "<td>"."Username"."</td>";
+                  echo "<td>".":"."</td>";
+                  echo "<td>".$username = $_POST['username']."</td>";
+                  echo "</tr>";
+                  // kolom program studi
+                  echo "<tr>";
+                  echo "<td>"."Angkatan"."</td>";
+                  echo "<td>".":"."</td>";
+                  echo "<td>".$angkatan = $_POST['angkatan']."</td>";
+                  echo "</tr>";
+                  // kolom jenis kelamin
+                  echo "<tr>";
+                  echo "<td>"."Jenis Kelamin"."</td>";
+                  echo "<td>".":"."</td>";
+                  echo "<td>".$jeniskelamin = $_POST['jeniskelamin']."</td>";
+                  echo "</tr>";
+                  // kolom hobi
+                  if (isset($_POST['hobi'])) {
+                      $hobi = $_POST['hobi'];
+                      echo "<tr>";
+                      echo "<td>"."Hobi"."</td>";
+                      echo "<td>".":"."</td>";
+                      echo "<td>"."List Hobi Anda :"."</td>";
+                      echo "</tr>";
+                      for ($i=0; $i < count($hobi) ; $i++){
+                          echo "<tr>";
+                          echo "<td>".""."</td>";
+                          echo "<td>".""."</td>";
+                          echo "<td>"."- ".$hobi[$i]."</td>";
+                          echo "</tr>";
+                      }
+                  }
+                }
+              ?>
+            </thead>
+          </table>
+        <a href="tugasjava.html" class="previous">&laquo; Previous</a>
+      </div>
+    </section>
+    <!-- ======= End Hasil Form ======= -->
+  
+  </main><!-- End #main -->
 
     <!-- ======= Footer ======= -->
     <footer id="footer">
