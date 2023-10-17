@@ -1,3 +1,13 @@
+<?php
+    $servername = "prognet.localnet";
+    $username = "2205551009";
+    $password = "2205551009";
+    $dbname = "db_2205551009";
+
+    // membentuk koneksi ke database mysql
+    $conn = new mysqli($servername, $username, $password, $dbname);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +15,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Index - Nadila</title>
+  <title>Tugas Prognet - Nadila</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -47,9 +57,10 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="active" href="index.html">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About Me</a></li>
           <li><a href="tugasprognet.html">Tugas Prognet</a></li>
+          <li><a class="active" href="dbsql_select.php">List Biodata</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -57,7 +68,7 @@
       <div class="header-social-links">
         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
         <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="nadilasnthdewi"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
         <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
       </div>
 
@@ -65,15 +76,47 @@
 
   </header><!-- End Header -->
 
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center bg-image" style="background-image: url(assets/img/home4.jpg);">
-    <div class="container d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="100">
-      <h1>Selamat Datang di Web</h1>
-      <h1>Tugas Pemrograman Internet</h1>
-      <h2>Ni Putu Nadila Sinthadewi</h2>
-      <a href="about.html" class="btn-about">About Me</a>
+  <main id="main"><!-- Start main -->
+
+  <!-- ======= Start Hasil Form ======= -->
+  <section id="form" class="form-mf sect-pt4 route">
+    <div class="container mt-5">
+      <h1 class="text-center mb-5">List Biodata Mahasiswa</h1>
+      <table class="table table-bordered text-center">
+      <thead>
+        <tr>
+          <th>NIM</th>
+          <th>Nama Lengkap</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+          $sql = "SELECT nim, nama_lengkap FROM tb_biodatamhs";
+          $result = $conn->query($sql);
+          while($row = $result->fetch_assoc()) {
+        ?>
+
+        <tr>
+          <td><?php echo $row['nim']; ?></td>
+	        <td><?php echo $row['nama_lengkap']; ?></td>
+          <td>
+          <a class="btn btn-primary" href="dbsql_details.php?nim=<?php echo $row['nim']; ?>">Detail Data</a>
+          <a class="btn btn-warning" href="dbsql_update.php?nim=<?php echo $row['nim']; ?>">Edit</a>
+          <a class="btn btn-danger" href="dbsql_delete.php?nim=<?php echo $row['nim']; ?>">Hapus</a>
+          </td>
+        </tr>
+      <?php
+        }
+      ?>
+   </tbody>
+      </table>
+      <a href="tugas_dbsql.php" class="previous">&laquo; Previous</a>
     </div>
-  </section><!-- End Hero -->
+  </section>
+  <!-- ======= End Hasil Form ======= -->
+
+</main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">

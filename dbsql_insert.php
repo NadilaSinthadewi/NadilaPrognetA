@@ -1,3 +1,19 @@
+<?php
+    $servername = "prognet.localnet";
+    $username = "2205551009";
+    $password = "2205551009";
+    $dbname = "db_2205551009";
+
+    // membentuk koneksi ke database mysql
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    $sql = "INSERT INTO tb_biodatamhs (NIM,Nama_Lengkap,Nama_Panggilan,Tanggal_Lahir, Email, Angkatan, Program_Studi, Jenis_kelamin, Hobi) VALUES
+            ('$_POST[nim]','$_POST[fullname]','$_POST[nickname]','$_POST[tgllahir]','$_POST[email]','$_POST[angkatan]','$_POST[prodi]','$_POST[jeniskelamin]','$_POST[hobi]')";
+    if ($conn->query($sql) === TRUE){
+        echo "data behasil";
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +21,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Index - Nadila</title>
+  <title>Tugas Prognet - Nadila</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -47,9 +63,10 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="active" href="index.html">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About Me</a></li>
           <li><a href="tugasprognet.html">Tugas Prognet</a></li>
+          <li><a class="active" href="dbsql_select.php">List Biodata</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -57,7 +74,7 @@
       <div class="header-social-links">
         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
         <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="nadilasnthdewi"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
         <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
       </div>
 
@@ -65,15 +82,80 @@
 
   </header><!-- End Header -->
 
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center bg-image" style="background-image: url(assets/img/home4.jpg);">
-    <div class="container d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="100">
-      <h1>Selamat Datang di Web</h1>
-      <h1>Tugas Pemrograman Internet</h1>
-      <h2>Ni Putu Nadila Sinthadewi</h2>
-      <a href="about.html" class="btn-about">About Me</a>
+  <main id="main"><!-- Start main -->
+
+  <!-- ======= Start Hasil Form ======= -->
+  <section id="form" class="form-mf sect-pt4 route">
+    <div class="container mt-5">
+      <h1 class="text-center mb-5">Hasil Form Biodata</h1>
+        <table class="table" border="2">
+          <thead>
+            <?php
+              if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                // kolom nim
+                echo "<tr>";
+                echo "<td>"."NIM"."</td>";
+                echo "<td>".":"."</td>";
+                echo "<td>".$nim = $_POST['nim']."</td>";
+                echo "</tr>";
+                // kolom nama lengkap
+                echo "<tr>";
+                echo "<td>"."Nama Lengkap"."</td>";
+                echo "<td>".":"."</td>";
+                echo "<td>".$fullname = $_POST['fullname']."</td>";
+                echo "</tr>";
+                // kolom nama panggilan
+                echo "<tr>";
+                echo "<td>"."Nama Panggilam"."</td>";
+                echo "<td>".":"."</td>";
+                echo "<td>".$nickname = $_POST['nickname']."</td>";
+                echo "</tr>";
+                echo "</tr>";
+                // kolom tanggal lahir
+                echo "<tr>";
+                echo "<td>"."Tanggal Lahir"."</td>";
+                echo "<td>".":"."</td>";
+                echo "<td>".$tgllahir = $_POST['tgllahir']."</td>";
+                echo "</tr>";
+                // kolom e-mail
+                echo "<tr>";
+                echo "<td>"."E-mail"."</td>";
+                echo "<td>".":"."</td>";
+                echo "<td>".$email = $_POST['email']."</td>";
+                echo "</tr>";
+                // kolom angkatan
+                echo "<tr>";
+                echo "<td>"."Angkatan"."</td>";
+                echo "<td>".":"."</td>";
+                echo "<td>".$angkatan = $_POST['angkatan']."</td>";
+                echo "</tr>";
+                // kolom program studi
+                echo "<tr>";
+                echo "<td>"."Program Studi"."</td>";
+                echo "<td>".":"."</td>";
+                echo "<td>".$prodi = $_POST['prodi']."</td>";
+                echo "</tr>";
+                // kolom jenis kelamin
+                echo "<tr>";
+                echo "<td>"."Jenis Kelamin"."</td>";
+                echo "<td>".":"."</td>";
+                echo "<td>".$jeniskelamin = $_POST['jeniskelamin']."</td>";
+                // kolom hobi
+                echo "<tr>";
+                echo "<td>"."Hobi"."</td>";
+                echo "<td>".":"."</td>";
+                echo "<td>".$hobi = $_POST['hobi']."</td>";
+                echo "</tr>";
+              }
+            ?>
+          </thead>
+        </table>
+      <a href="tugas_dbsql.php" class="previous">&laquo; Previous</a>
     </div>
-  </section><!-- End Hero -->
+  </section>
+  <!-- ======= End Hasil Form ======= -->
+
+</main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">

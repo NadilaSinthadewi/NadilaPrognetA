@@ -1,3 +1,15 @@
+<?php
+    $servername = "prognet.localnet";
+    $username = "2205551009";
+    $password = "2205551009";
+    $dbname = "db_2205551009";
+
+    // membentuk koneksi ke database mysql
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    $idtodetails=$_GET['nim'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +17,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Index - Nadila</title>
+  <title>Tugas Prognet - Nadila</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -47,9 +59,10 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="active" href="index.html">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About Me</a></li>
           <li><a href="tugasprognet.html">Tugas Prognet</a></li>
+          <li><a class="active" href="dbsql_select.php">List Biodata</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -57,7 +70,7 @@
       <div class="header-social-links">
         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
         <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="nadilasnthdewi"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
         <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
       </div>
 
@@ -65,15 +78,82 @@
 
   </header><!-- End Header -->
 
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center bg-image" style="background-image: url(assets/img/home4.jpg);">
-    <div class="container d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="100">
-      <h1>Selamat Datang di Web</h1>
-      <h1>Tugas Pemrograman Internet</h1>
-      <h2>Ni Putu Nadila Sinthadewi</h2>
-      <a href="about.html" class="btn-about">About Me</a>
+  <main id="main"><!-- Start main -->
+
+  <!-- ======= Start Hasil Form ======= -->
+  <section id="form" class="form-mf sect-pt4 route">
+    <div class="container mt-5">
+      <h1 class="text-center mb-5">Detail Biodata Mahasiswa</h1>
+        <table class="table" border="2">
+          <thead>
+            <?php
+                $sql = "SELECT * FROM tb_biodatamhs WHERE NIM='$idtodetails'";
+                $result = $conn->query($sql);
+                while($row = $result->fetch_assoc()) {
+                    // kolom nim
+                    echo "<tr>";
+                    echo "<td>"."NIM"."</td>";
+                    echo "<td>".":"."</td>";
+                    echo "<td>".$row['NIM']."</td>";
+                    echo "</tr>";
+                    // kolom nama lengkap
+                    echo "<tr>";
+                    echo "<td>"."Nama Lengkap"."</td>";
+                    echo "<td>".":"."</td>";
+                    echo "<td>".$row['Nama_Lengkap']."</td>";
+                    echo "</tr>";
+                    // kolom nama panggilan
+                    echo "<tr>";
+                    echo "<td>"."Nama Panggilan"."</td>";
+                    echo "<td>".":"."</td>";
+                    echo "<td>".$row['Nama_Panggilan']."</td>";
+                    echo "</tr>";
+                    // kolom tanggal lahir
+                    echo "<tr>";
+                    echo "<td>"."Tanggal Lahir"."</td>";
+                    echo "<td>".":"."</td>";
+                    echo "<td>".$row['Tanggal_Lahir']."</td>";
+                    echo "</tr>";
+                    // kolom e-mail
+                    echo "<tr>";
+                    echo "<td>"."E-mail"."</td>";
+                    echo "<td>".":"."</td>";
+                    echo "<td>".$row['Email']."</td>";
+                    echo "</tr>";
+                    // kolom angkatan
+                    echo "<tr>";
+                    echo "<td>"."Angkatan"."</td>";
+                    echo "<td>".":"."</td>";
+                    echo "<td>".$row['Angkatan']."</td>";
+                    echo "</tr>";
+                    // kolom program studi
+                    echo "<tr>";
+                    echo "<td>"."Program Studi"."</td>";
+                    echo "<td>".":"."</td>";
+                    echo "<td>".$row['Program_Studi']."</td>";
+                    echo "</tr>";
+                    // kolom jenis kelamin
+                    echo "<tr>";
+                    echo "<td>"."Jenis Kelamin"."</td>";
+                    echo "<td>".":"."</td>";
+                    echo "<td>".$row['Jenis_Kelamin']."</td>";
+                    echo "</tr>";
+                    // kolom hobi
+                    echo "<tr>";
+                    echo "<td>"."Hobi"."</td>";
+                    echo "<td>".":"."</td>";
+                    echo "<td>".$row['Hobi']."</td>";
+                    echo "</tr>";
+                }
+            ?>
+          </thead>
+        </table>
+      <a href="dbsql_select.php" class="previous">&laquo; Previous</a>
     </div>
-  </section><!-- End Hero -->
+  </section>
+  <!-- ======= End Hasil Form ======= -->
+
+</main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
