@@ -94,7 +94,7 @@
                     echo "<tr>";
                     echo "<td>"."NIM"."</td>";
                     echo "<td>".":"."</td>";
-                    echo "<td>".$row['NIM']."</td>";
+                    echo "<td>".$row['nim']."</td>";
                     echo "</tr>";
                     // kolom nama lengkap
                     echo "<tr>";

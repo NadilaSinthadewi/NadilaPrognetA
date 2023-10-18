@@ -7,7 +7,7 @@
     // membentuk koneksi ke database mysql
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    $sql = "INSERT INTO tb_biodatamhs (NIM,Nama_Lengkap,Nama_Panggilan,Tanggal_Lahir, Email, Angkatan, Program_Studi, Jenis_kelamin, Hobi) VALUES
+    $sql = "INSERT INTO tb_biodatamhs (nim,Nama_Lengkap,Nama_Panggilan,Tanggal_Lahir, Email, Angkatan, Program_Studi, Jenis_kelamin, Hobi) VALUES
             ('$_POST[nim]','$_POST[fullname]','$_POST[nickname]','$_POST[tgllahir]','$_POST[email]','$_POST[angkatan]','$_POST[prodi]','$_POST[jeniskelamin]','$_POST[hobi]')";
     if ($conn->query($sql) === TRUE){
         echo "data behasil";
@@ -104,12 +104,11 @@
                 echo "<td>".":"."</td>";
                 echo "<td>".$fullname = $_POST['fullname']."</td>";
                 echo "</tr>";
-                // kolom nama panggilan
+                // kolom nama panggilan 
                 echo "<tr>";
-                echo "<td>"."Nama Panggilam"."</td>";
+                echo "<td>"."Nama Panggilan"."</td>";
                 echo "<td>".":"."</td>";
                 echo "<td>".$nickname = $_POST['nickname']."</td>";
-                echo "</tr>";
                 echo "</tr>";
                 // kolom tanggal lahir
                 echo "<tr>";
@@ -140,6 +139,7 @@
                 echo "<td>"."Jenis Kelamin"."</td>";
                 echo "<td>".":"."</td>";
                 echo "<td>".$jeniskelamin = $_POST['jeniskelamin']."</td>";
+                echo "</tr>";
                 // kolom hobi
                 echo "<tr>";
                 echo "<td>"."Hobi"."</td>";
